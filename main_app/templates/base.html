@@ -9,6 +9,22 @@
         <title>StatForge - {% block title %}{% endblock %}</title>
     </head>
     <body>
+        <nav class="navbar">
+            <div class="nav-home">
+                <a class="nav-link" href="/">StatForge</a>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="navbar-menu navbar-end">
+                    <span class="navbar-item">Welcome {{user.username}}</span>
+                    <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
+                </div>
+            {% else %}
+                <div class="navbar-menu navbar-end">
+                    <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+                    <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            {% endif %}
+        </nav>
         {% block content %}{% endblock %}
     </body>
 </html>
