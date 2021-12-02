@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{rpg.title}}{% endblock %}
+
+{% block content %}
+
+<h1>{{rpg.title}}</h1>
+
+<div class="rpg_page">
+    {% for stat in rpg.stats.all %}
+    <p>{{stat.title}}</p>
+    {% endfor %}
+    {% for class in rpg.classes.all %}
+    <p>{{class.title}}</p>
+    {% endfor %}
+    {% comment %} <a href="{% url 'rpg_update' rpg.pk %}"><button type="button">Edit RPG</button></a> {% endcomment %}
+</div>
+
+{% endblock %}

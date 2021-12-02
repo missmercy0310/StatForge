@@ -25,7 +25,7 @@ class Stat(models.Model):
     description = models.CharField(max_length=2500)
     max_value = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE)
+    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE, related_name="stats")
 
     def __str__(self):
         return f"{self.rpg.title}, {self.title}"
@@ -37,7 +37,7 @@ class Classification(models.Model):
     title = models.CharField(max_length=500)
     description = models.CharField(max_length=2500)
     created_at = models.DateTimeField(auto_now_add=True)
-    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE)
+    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE, related_name="classes")
 
     def __str__(self):
         return f"{self.rpg.title}, {self.title}"
@@ -51,7 +51,7 @@ class Entity(models.Model):
     class_options = models.ManyToManyField(Classification, through='ClassOption')
     stat_buffs = models.ManyToManyField(Stat, through='StatBuff')
     created_at = models.DateTimeField(auto_now_add=True)
-    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE)
+    rpg = models.ForeignKey(RPG, on_delete=models.CASCADE, related_name="entities")
 
     def __str__(self):
         return f"{self.rpg.title}, {self.title}"

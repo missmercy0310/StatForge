@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}RPGs{% endblock  %}
+
+{% block content %}
+
+<h1>All RPGs</h1>
+
+<div class="rpg_gallery">
+    {% for rpg in rpgs %}
+    <a href="/rpgs/{{rpg.pk}}">
+        <div class="rpg">
+            <div class="rpg-header">
+                <p class="rpg-header-title">{{rpg.title}}</p>
+            </div>
+            <div class="rpg-description">
+                <p class="rpg-description-p">{{rpg.description}}</p>
+            </div>
+        </div>
+    </a>
+    {% empty %}
+    <article class="message">
+        <div class="message-header">
+            <p>No RPGs Available</p>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+{% endblock %}
