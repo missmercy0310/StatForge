@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="account_update">
-    <form method="post" action="{% url 'account_update' user.pk %}">
+    <form method="post" action="{% url 'account_update' request.user.pk %}">
         {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
     </form>
 </div>

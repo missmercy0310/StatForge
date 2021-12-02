@@ -57,10 +57,12 @@
         {% endif %}
     </div>
 
-    <div class="edit_buttons">
-        <a href="{% url 'rpg_update' rpg.pk %}"><button type="button">Edit RPG</button></a>
-        <a href="{% url 'rpg_delete' rpg.pk %}"><button type="button">Delete RPG</button></a>
-    </div>
+    {% if rpg.user == request.user %}
+        <div class="edit_buttons">
+            <a href="{% url 'rpg_update' rpg.pk %}"><button type="button">Edit RPG</button></a>
+            <a href="{% url 'rpg_delete' rpg.pk %}"><button type="button">Delete RPG</button></a>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

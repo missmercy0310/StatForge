@@ -7,7 +7,9 @@
 <h1>{{user.username}}</h1>
 
 <div class="account_page">
-    <a href="{% url 'account_update' user.pk %}"><button type="button">Update Account</button></a>
+    {% if request.user == user %}
+        <a href="{% url 'account_update' request.user.pk %}"><button type="button">Update Account</button></a>
+    {% endif %}
 </div>
 
 {% endblock %}

@@ -13,9 +13,9 @@
             <div class="nav-home">
                 <a class="nav-link" href="/">StatForge</a>
             </div>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
                 <div class="navbar-menu navbar-end">
-                    <span class="navbar-item"><a href="/accounts/{{user.id}}">Welcome {{user.username}}</a></span>
+                    <span class="navbar-item"><a href="/accounts/{{request.user.id}}">Welcome {{request.user.username}}</a></span>
                     <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
                 </div>
             {% else %}
