@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import DetailView
 from main_app.models import User, RPG
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.urls import reverse
 
 
@@ -53,3 +53,28 @@ class RPGIndex(TemplateView):
 class RPGDetail(DetailView):
     model = RPG
     template_name = "rpg_detail.html"
+
+class RPGCreate(CreateView):
+    model = RPG
+    fields = ['title', 'genre', 'description']
+    template_name = "rpg_create.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(RPGCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('rpg_detail', kwargs={'pk': self.object.pk})
+
+class RPGUpdate(UpdateView):
+    model = RPG
+    fields = ['title', 'genre', 'description']
+    template_name = "rpg_update.html"
+
+    def get_success_url(self):
+        return reverse('rpg_detail', kwargs={'pk': self.object.pk})
+
+class RPGDelete(DeleteView):
+    model = RPG
+    template_name = "rpg_delete_confirm.html"
+    success_url = "/rpgs/"

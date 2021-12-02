@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit {{rpg.title}}{% endblock %}
+
+{% block content %}
+
+<div class="rpg_update">
+    <form method="post">
+        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{% endblock %}

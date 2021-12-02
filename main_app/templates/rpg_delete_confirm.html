@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Deleting {{rpg.title}}{% endblock %}
+
+{% block content %}
+
+<h1>Are you sure you want to delete {{rpg.title}}?</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="buttons">
+    <input class="button" type="submit" value="Confirm" />
+    <a class="button" href="{% url 'rpg_detail' rpg.pk %}">Cancel</a>
+  </div>
+</form>
+
+{% endblock %}
