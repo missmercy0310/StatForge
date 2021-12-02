@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Create New {{rpg.entities_name}}{% endblock %}
+
+{% block content %}
+
+<div class="stat_create">
+    <h1>Create New {{rpg.entities_name}}</h1>
+    <form method="post">
+        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{% if rpg.entities.all %}
+    <div class="created_playable_entities">
+        <h2>Created {{rpg.entities_name}}</h2>
+        
+        {% for entity in rpg.entities.all %}
+            <h3>{{entity.title}}</h3>
+            <p>{{entity.description}}</p>
+        {% endfor %}
+
+        <a href="{% url 'rpg_detail' rpg.pk %}"><button type="button">Done</button></a>
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Create New {{rpg.classes_name}}{% endblock %}
+
+{% block content %}
+
+<div class="stat_create">
+    <h1>Create New {{rpg.classes_name}}</h1>
+    <form method="post">
+        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{% if rpg.classes.all %}
+    <div class="created_classes">
+        <h2>Created {{rpg.classes_name}}</h2>
+        
+        {% for classification in rpg.classes.all %}
+            <h3>{{classification.title}}</h3>
+            <p>{{classification.description}}</p>
+        {% endfor %}
+
+        <a href="{% url 'rpg_detail' rpg.pk %}"><button type="button">Done</button></a>
+    </div>
+{% endif %}
+
+{% endblock %}

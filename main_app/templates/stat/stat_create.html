@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Create New {{rpg.stats_name}}{% endblock %}
+
+{% block content %}
+
+<div class="stat_create">
+    <h1>Create New {{rpg.stats_name}}</h1>
+    <form method="post">
+        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+    </form>
+</div>
+
+{% if rpg.stats.all %}
+    <div class="created_stats">
+        <h2>Created {{rpg.stats_name}}</h2>
+        
+        {% for stat in rpg.stats.all %}
+            <h3>{{stat.title}}</h3>
+            <p>{{stat.description}}</p>
+            <p>{{stat.max_value}}</p>
+        {% endfor %}
+
+        <a href="{% url 'rpg_detail' rpg.pk %}"><button type="button">Done</button></a>
+    </div>
+{% endif %}
+
+{% endblock %}

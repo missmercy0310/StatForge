@@ -31,7 +31,7 @@ class Stat(models.Model):
         return f"{self.rpg.title}, {self.title}"
 
     class Meta:
-        ordering = ['title']
+        ordering = ['rpg']
 
 class Classification(models.Model):
     title = models.CharField(max_length=500)
@@ -43,7 +43,7 @@ class Classification(models.Model):
         return f"{self.rpg.title}, {self.title}"
 
     class Meta:
-        ordering = ['title']
+        ordering = ['rpg']
 
 class Entity(models.Model):
     title = models.CharField(max_length=500)
@@ -57,7 +57,7 @@ class Entity(models.Model):
         return f"{self.rpg.title}, {self.title}"
 
     class Meta:
-        ordering = ['title']
+        ordering = ['rpg']
 
 class ClassOption(models.Model):
     entity = models.ForeignKey(Entity, on_delete=models.CASCADE)
