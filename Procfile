@@ -1,0 +1,1 @@
+web: gunicorn stat_forge_project.wsgi
