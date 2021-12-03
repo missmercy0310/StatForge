@@ -45,7 +45,7 @@ class AccountUpdate(UpdateView):
     template_name = "account/account_update.html"
 
     def get_success_url(self):
-        return reverse("account/account_detail", kwargs={'pk': self.object.pk})
+        return reverse("account_detail", kwargs={'pk': self.object.pk})
 
 class RPGIndex(TemplateView):
     template_name = "rpg/rpg_index.html"
@@ -69,7 +69,7 @@ class RPGCreate(CreateView):
         return super(RPGCreate, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('rpg/rpg_detail', kwargs={'pk': self.object.pk})
+        return reverse('rpg_detail', kwargs={'pk': self.object.pk})
 
 class RPGUpdate(UpdateView):
     model = RPG
@@ -77,7 +77,7 @@ class RPGUpdate(UpdateView):
     template_name = "rpg/rpg_update.html"
 
     def get_success_url(self):
-        return reverse('rpg/rpg_detail', kwargs={'pk': self.object.pk})
+        return reverse('rpg_detail', kwargs={'pk': self.object.pk})
 
 class RPGDelete(DeleteView):
     model = RPG
@@ -99,7 +99,7 @@ class StatCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('stat/stat_create', kwargs={'pk': self.object.rpg.pk})
+        return reverse('stat_create', kwargs={'pk': self.object.rpg.pk})
 
 class ClassificationCreate(CreateView):
     model = Classification
@@ -116,7 +116,7 @@ class ClassificationCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('classification/classification_create', kwargs={'pk': self.object.rpg.pk})
+        return reverse('classification_create', kwargs={'pk': self.object.rpg.pk})
 
 class PlayableEntityCreate(CreateView):
     model = Entity
@@ -133,4 +133,4 @@ class PlayableEntityCreate(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse('playable_entity/playable_entity_create', kwargs={'pk': self.object.rpg.pk})
+        return reverse('playable_entity_create', kwargs={'pk': self.object.rpg.pk})
