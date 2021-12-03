@@ -3,27 +3,29 @@
 {% block title %}Create Your Own TTRPG{% endblock %}
 
 {% block content %}
+
     <h1>StatForge</h1>
     <a href="{% url 'rpg_create' %}">Create New RPG</a>
     {% for rpg in rpgs %}
-    <a href="/rpgs/{{rpg.pk}}">
-        <div class="rpg">
-            <div class="rpg-header">
-                <p class="rpg-header-title">{{rpg.title}}</p>
+        <a href="/rpgs/{{rpg.pk}}">
+            <div class="rpg">
+                <div class="rpg-header">
+                    <p class="rpg-header-title">{{rpg.title}}</p>
+                </div>
+                <div class="rpg-creator">
+                    <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
+                </div>
+                <div class="rpg-description">
+                    <p class="rpg-description-p">Description: {{rpg.description}}</p>
+                </div>
             </div>
-            <div class="rpg-creator">
-                <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
-            </div>
-            <div class="rpg-description">
-                <p class="rpg-description-p">Description: {{rpg.description}}</p>
-            </div>
-        </div>
-    </a>
+        </a>
     {% empty %}
-    <article class="message">
-        <div class="message-header">
-            <p>No RPGs Available</p>
-        </div>
-    </article>
+        <article class="message">
+            <div class="message-header">
+                <p>No RPGs Available</p>
+            </div>
+        </article>
     {% endfor %}
+    
 {% endblock %}

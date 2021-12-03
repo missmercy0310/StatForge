@@ -10,6 +10,21 @@
     {% if request.user == user %}
         <a href="{% url 'account_update' request.user.pk %}"><button type="button">Update Account</button></a>
     {% endif %}
+    {% for rpg in user.rpgs.all %}
+        <a href="/rpgs/{{rpg.pk}}">
+            <div class="rpg">
+                <div class="rpg-header">
+                    <p class="rpg-header-title">{{rpg.title}}</p>
+                </div>
+                <div class="rpg-creator">
+                    <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
+                </div>
+                <div class="rpg-description">
+                    <p class="rpg-description-p">Description: {{rpg.description}}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 {% endblock %}
