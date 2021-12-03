@@ -4,21 +4,28 @@
 
 {% block content %}
 
-<div class="stat_create">
+<div class="stat_create format">
     <h1>Create New {{rpg.stats_name}}</h1>
     <form method="post">
-        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+        {% csrf_token %} {{form.as_p}} <input class="button" type="submit" value="Submit" />
     </form>
 </div>
 
 {% if rpg.stats.all %}
-    <div class="created_stats">
+    <div class="created_stats format">
         <h2>Created {{rpg.stats_name}}</h2>
         
         {% for stat in rpg.stats.all %}
-            <h3>{{stat.title}}</h3>
-            <p>{{stat.description}}</p>
-            <p>{{stat.max_value}}</p>
+        <div class="item">
+            <div>
+                <h3>{{stat.title}}</h3>
+                <p>{{stat.description}}</p>
+            </div>
+            <div>
+                <h3>Max Value:</h3>
+                <p>{{stat.max_value}}</p>
+            </div>
+        </div>
         {% endfor %}
 
         <a href="{% url 'rpg_detail' rpg.pk %}"><button type="button">Done</button></a>

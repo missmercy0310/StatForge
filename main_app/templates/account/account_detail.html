@@ -4,27 +4,42 @@
 
 {% block content %}
 
-<h1>{{user.username}}</h1>
+<div class="account_page format">
+    <h1>{{user.username}}</h1>
 
-<div class="account_page">
     {% if request.user == user %}
         <a href="{% url 'account_update' request.user.pk %}"><button type="button">Update Account</button></a>
     {% endif %}
-    {% for rpg in user.rpgs.all %}
-        <a href="/rpgs/{{rpg.pk}}">
-            <div class="rpg">
-                <div class="rpg-header">
-                    <p class="rpg-header-title">{{rpg.title}}</p>
-                </div>
-                <div class="rpg-creator">
-                    <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
-                </div>
-                <div class="rpg-description">
-                    <p class="rpg-description-p">Description: {{rpg.description}}</p>
-                </div>
-            </div>
-        </a>
-    {% endfor %}
+    
+    <div class="rpgs-display">
+        <h2 class="rpgs-title">Public RPGs:</h2>
+        <div class="rpg-cards">
+            {% for rpg in user.rpgs.all %}
+                <a href="/rpgs/{{rpg.pk}}">
+                    <div class="rpg-card">
+                        <div class="rpg-header">
+                            <h3 class="rpg-header-title">{{rpg.title}}</h3>
+                            <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
+                        </div>
+                        <div class="rpg-genre">
+                            <h4 class="rpg-genre-h">Genre:</h4>
+                            <p class="rpg-genre-p">{{rpg.genre}}</p>
+                        </div>
+                        <div class="rpg-description">
+                            <h4 class="rpg-description-h">Description:</h4>
+                            <p class="rpg-description-p">{{rpg.description}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <article class="message">
+                    <div class="message-header">
+                        <p>No RPGs Available</p>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}

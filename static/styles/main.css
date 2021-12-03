@@ -18,20 +18,79 @@
     display: flex;
     align-items: center;
     gap: 20px; }
+  .navbar a {
+    transition: 300ms ease-in-out; }
+    .navbar a:hover {
+      color: #494949; }
+
+.rpgs-display {
+  margin: 20px 0;
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; }
+  .rpgs-display .rpg-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .rpgs-display .rpg-cards .rpg-card {
+      margin: 20px;
+      padding: 20px;
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.3);
+      transition: 300ms ease-in-out; }
+      .rpgs-display .rpg-cards .rpg-card:hover {
+        box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.5);
+        transform: scale(1.05); }
+
+.format {
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; }
+  .format .item {
+    display: flex;
+    gap: 20px; }
+
+form {
+  margin: 20px 0;
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; }
 
 .button {
-  display: block;
+  font-size: medium;
   max-width: 250px;
-  margin: 0 auto;
   padding: 5px 10px;
   background: #cccccc;
   border: 2px solid black;
-  border-radius: 5px; }
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 300ms ease-in-out; }
+  .button:hover {
+    background: white; }
+
+.centered {
+  text-align: center;
+  display: block;
+  margin: 20px auto; }
 
 button {
+  font-size: medium;
   padding: 5px 10px;
   background: #cccccc;
   border: 2px solid black;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 300ms ease-in-out; }
+  button:hover {
+    background: white; }
 
 /*# sourceMappingURL=main.css.map */

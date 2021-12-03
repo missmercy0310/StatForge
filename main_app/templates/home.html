@@ -5,36 +5,43 @@
 {% block content %}
 
 <main class="home-page">
-    <h1 class="home-title">StatForge</h1>
+    <h1 class="home-title centered">StatForge</h1>
 
     {% if request.user.is_authenticated %}
-        <a class='button' href="{% url 'rpg_create' %}">Create New RPG</a>
+        <a class='button centered' href="{% url 'rpg_create' %}">Create New RPG</a>
     {% else %}
-        <a class='button' href="{% url 'login' %}">Create New RPG</a>
+        <a class='button centered' href="{% url 'login' %}">Create New RPG</a>
     {% endif %}
 
-    {% for rpg in rpgs %}
-        <a href="/rpgs/{{rpg.pk}}">
-            <div class="rpg">
-                <div class="rpg-header">
-                    <p class="rpg-header-title">{{rpg.title}}</p>
-                </div>
-                <div class="rpg-creator">
-                    <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
-                </div>
-                <div class="rpg-description">
-                    <p class="rpg-description-p">Description:</p>
-                    <p class="rpg-description-p">{{rpg.description}}</p>
-                </div>
-            </div>
-        </a>
-    {% empty %}
-        <article class="message">
-            <div class="message-header">
-                <p>No RPGs Available</p>
-            </div>
-        </article>
-    {% endfor %}
+    <div class="rpgs-display">
+        <h2 class="rpgs-title">Public RPGs:</h2>
+        <div class="rpg-cards">
+            {% for rpg in rpgs %}
+                <a href="/rpgs/{{rpg.pk}}">
+                    <div class="rpg-card">
+                        <div class="rpg-header">
+                            <h3 class="rpg-header-title">{{rpg.title}}</h3>
+                            <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
+                        </div>
+                        <div class="rpg-genre">
+                            <h4 class="rpg-genre-h">Genre:</h4>
+                            <p class="rpg-genre-p">{{rpg.genre}}</p>
+                        </div>
+                        <div class="rpg-description">
+                            <h4 class="rpg-description-h">Description:</h4>
+                            <p class="rpg-description-p">{{rpg.description}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <article class="message">
+                    <div class="message-header">
+                        <p>No RPGs Available</p>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
 </main>
 
 {% endblock %}

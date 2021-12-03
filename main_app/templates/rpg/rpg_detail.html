@@ -4,23 +4,52 @@
 
 {% block content %}
 
-<h1>{{rpg.title}}</h1>
-
-<div class="rpg_page">
+<div class="rpg_page format">
+    <h1>{{rpg.title}}</h1>
+    <p>Created by {{rpg.user.username}}</p>
+        {% if rpg.user == request.user %}
+            <div class="edit_buttons item">
+                <a href="{% url 'rpg_update' rpg.pk %}"><button type="button">Edit RPG</button></a>
+                <a href="{% url 'rpg_delete' rpg.pk %}"><button type="button">Delete RPG</button></a>
+            </div>
+        {% endif %}
     <div class="rpg_items">
+        <div class="description format">
+            <div>
+                <h2>Genre</h2>
+                <p>{{rpg.genre}}</p>
+            </div>
+
+            <div>
+                <h2>Description</h2>
+                <p>{{rpg.description}}</p>
+            </div>
+        </div>
+
+        <div class="item">
         {% if rpg.stats.all %}
+        <div class="stats format">
             <h2>{{rpg.stats_name}}</h2>
         
             {% for stat in rpg.stats.all %}
-                <h3>{{stat.title}}</h3>
-                <p>{{stat.description}}</p>
-                <p>{{stat.max_value}}</p>
+            <div class="item">
+                <div>
+                    <h3>{{stat.title}}</h3>
+                    <p>{{stat.description}}</p>
+                </div>
+                <div>
+                    <h3>Max Value:</h3>
+                    <p>{{stat.max_value}}</p>
+                </div>
+            </div>
             {% endfor %}
 
             <a href="{% url 'stat_create' rpg.pk %}"><button type="button">Add More {{rpg.stats_name}}</button></a>
+        </div>
         {% endif %}
 
         {% if rpg.classes.all %}
+        <div class="classes format">
             <h2>{{rpg.classes_name}}</h2>
         
             {% for class in rpg.classes.all %}
@@ -29,9 +58,11 @@
             {% endfor %}
 
             <a href="{% url 'classification_create' rpg.pk %}"><button type="button">Add More {{rpg.classes_name}}</button></a>
+        </div>
         {% endif %}
 
         {% if rpg.entities.all %}
+        <div class="entities format">
             <h2>{{rpg.entities_name}}</h2>
 
             {% for entity in rpg.entities.all %}
@@ -40,29 +71,26 @@
             {% endfor %}
 
             <a href="{% url 'playable_entity_create' rpg.pk %}"><button type="button">Add More {{rpg.entities_name}}</button></a>
-        {% endif %}
-    </div>
-
-    <div class="add_buttons">
-        {% if not rpg.stats.all %}
-            <a href="{% url 'stat_create' rpg.pk %}"><button type="button">Add Stats</button></a>
-        {% endif %}
-
-        {% if not rpg.classes.all %}
-            <a href=""><button type="button">Add Classes</button></a>
-        {% endif %}
-
-        {% if not rpg.entities.all %}
-            <a href=""><button type="button">Add Playable Entities</button></a>
-        {% endif %}
-    </div>
-
-    {% if rpg.user == request.user %}
-        <div class="edit_buttons">
-            <a href="{% url 'rpg_update' rpg.pk %}"><button type="button">Edit RPG</button></a>
-            <a href="{% url 'rpg_delete' rpg.pk %}"><button type="button">Delete RPG</button></a>
         </div>
-    {% endif %}
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="format">
+        <div class="add_buttons item">
+            {% if not rpg.stats.all %}
+                <a href="{% url 'stat_create' rpg.pk %}"><button type="button">Add Stats</button></a>
+            {% endif %}
+
+            {% if not rpg.classes.all %}
+                <a href="{% url 'classification_create' rpg.pk %}"><button type="button">Add Classes</button></a>
+            {% endif %}
+
+            {% if not rpg.entities.all %}
+                <a href="{% url 'playable_entity_create' rpg.pk %}"><button type="button">Add Playable Entities</button></a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}

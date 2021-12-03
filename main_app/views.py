@@ -82,7 +82,7 @@ class RPGUpdate(UpdateView):
 class RPGDelete(DeleteView):
     model = RPG
     template_name = "rpg/rpg_delete_confirm.html"
-    success_url = "/rpgs/"
+    success_url = "/"
 
 class StatCreate(CreateView):
     model = Stat

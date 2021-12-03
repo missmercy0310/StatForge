@@ -4,15 +4,15 @@
 
 {% block content %}
 
-<div class="stat_create">
+<div class="stat_create format">
     <h1>Create New {{rpg.entities_name}}</h1>
     <form method="post">
-        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
+        {% csrf_token %} {{form.as_p}} <input class="button" type="submit" value="Submit" />
     </form>
 </div>
 
 {% if rpg.entities.all %}
-    <div class="created_playable_entities">
+    <div class="created_playable_entities format">
         <h2>Created {{rpg.entities_name}}</h2>
         
         {% for entity in rpg.entities.all %}

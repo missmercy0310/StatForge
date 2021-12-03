@@ -15,7 +15,7 @@
             </div>
             {% if request.user.is_authenticated %}
                 <div class="navbar-menu">
-                    <span class="navbar-item"><a href="/accounts/{{request.user.id}}">Welcome {{request.user.username}}</a></span>
+                    <a class="navbar-item" href="/accounts/{{request.user.id}}">Welcome {{request.user.username}}</a>
                     <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
                 </div>
             {% else %}

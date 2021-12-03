@@ -4,7 +4,8 @@
 
 {% block content %}
 
-<div class="rpg_create">
+<div class="rpg_create format">
+    <h1>Create New RPG</h1>
     <form method="post">
         {% csrf_token %} {{form.as_p}} <input class="button" type="submit" value="Submit" />
     </form>
