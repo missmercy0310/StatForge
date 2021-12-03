@@ -1,4 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Murecho&family=Oswald&family=Roboto&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    // border: 1px solid black;
+}
+
+.navbar {
+    background: rgb(204, 204, 204);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    .title {
+        font-size: x-large;
+    }
+
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+.button {
+    display: block;
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 5px 10px;
+    background: rgb(204, 204, 204);
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    background: rgb(204, 204, 204);
+    border: 2px solid black;
+    border-radius: 5px;
 }

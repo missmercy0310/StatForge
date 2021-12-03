@@ -1,5 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Murecho&family=Oswald&family=Roboto&display=swap");
 * {
   box-sizing: border-box;
-  margin: 0; }
+  margin: 0;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  color: black; }
+
+.navbar {
+  background: #cccccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px; }
+  .navbar .title {
+    font-size: x-large; }
+  .navbar .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px; }
+
+.button {
+  display: block;
+  max-width: 250px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  background: #cccccc;
+  border: 2px solid black;
+  border-radius: 5px; }
+
+button {
+  padding: 5px 10px;
+  background: #cccccc;
+  border: 2px solid black;
+  border-radius: 5px; }
 
 /*# sourceMappingURL=main.css.map */

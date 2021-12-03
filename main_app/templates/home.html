@@ -4,8 +4,15 @@
 
 {% block content %}
 
-    <h1>StatForge</h1>
-    <a href="{% url 'rpg_create' %}">Create New RPG</a>
+<main class="home-page">
+    <h1 class="home-title">StatForge</h1>
+
+    {% if request.user.is_authenticated %}
+        <a class='button' href="{% url 'rpg_create' %}">Create New RPG</a>
+    {% else %}
+        <a class='button' href="{% url 'login' %}">Create New RPG</a>
+    {% endif %}
+
     {% for rpg in rpgs %}
         <a href="/rpgs/{{rpg.pk}}">
             <div class="rpg">
@@ -16,7 +23,8 @@
                     <p class="rpg-creator-p">Created by {{rpg.user.username}}</p>
                 </div>
                 <div class="rpg-description">
-                    <p class="rpg-description-p">Description: {{rpg.description}}</p>
+                    <p class="rpg-description-p">Description:</p>
+                    <p class="rpg-description-p">{{rpg.description}}</p>
                 </div>
             </div>
         </a>
@@ -27,5 +35,6 @@
             </div>
         </article>
     {% endfor %}
-    
+</main>
+
 {% endblock %}
