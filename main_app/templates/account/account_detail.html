@@ -37,6 +37,9 @@
                         <p>No RPGs Available</p>
                     </div>
                 </article>
+                {% if request.user == user %}
+                    <a href="{% url 'rpg_create' %}"><button type="button">Create New RPG</button></a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

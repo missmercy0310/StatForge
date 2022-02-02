@@ -16,6 +16,7 @@
             {% if request.user.is_authenticated %}
                 <div class="navbar-menu">
                     <a class="navbar-item" href="/accounts/{{request.user.id}}">Welcome {{request.user.username}}</a>
+                    <a class="navbar-item" href="{% url 'rpg_create' %}">Create New RPG</a>
                     <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
                 </div>
             {% else %}
